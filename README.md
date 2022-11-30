@@ -11,3 +11,5 @@
   // Text Bold
   **For Bold Text**
 ```
+
+## React State & Lifecycle in Class Component
