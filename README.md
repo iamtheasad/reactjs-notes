@@ -23,6 +23,17 @@
 - `rendar` is a method
 - `state` is js `object`
 - A `state` always should have initial value
+- If we need `setSate` change with `state` value we can use arrow function of normal function in `setState`
+
+```
+this.setState((state, props) => ({
+  counter: state.counter + props.increment
+}));
+```
+
+- If we work on any `reference value` we should not work with `this.state.value`. Instead we will create another instance in `immutable` way and we will modify them.
+
+- `React` is one way data flow. Always data flow to it's child.
 
 ### componentDidMount
 
