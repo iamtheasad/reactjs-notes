@@ -77,3 +77,5 @@ componentWillUnmount(){
   }
 }
 ```
+
+## React Event Handling & Control Re Rendering
