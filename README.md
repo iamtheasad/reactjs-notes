@@ -13,3 +13,56 @@
 ```
 
 ## React State & Lifecycle in Class Component
+
+- Class Component is statefull component
+- Functional Component is a stateless component
+- In functional component we use `useEffect()` hook instead of class lifecycle method
+- `props` will be change from outside of the component and `state` will be define inside the component
+- `state` means data of `component`
+- `state` is property of `React.Component` method
+- `rendar` is a method
+- `state` is js `object`
+- A `state` always should have initial value
+
+### componentDidMount
+
+- `componentDidMount(){}` is lifecycle `event` or `hook`
+- After loading browser that means when browser get load and ready to show website what will be happen to the website that will be define in `componentDidMount(){}` `hook`
+
+### componentWillUnmount
+
+- `componentWillUnmount(){}` is lifecycle `event` or `hook`
+- When element get away from dom before that what will be happen to that element that will be define in `componentWillUnmount(){}` `hook`
+
+```
+import React from 'react';
+
+class Clock extends React.Compotent{
+  constructor(props){
+    super(props);
+    this.state = {date: new Date()}
+  }
+
+componentDidMount(){
+ this.clockTimer =  setInterval(() => this.tick(), 1000);
+}
+
+tick(){
+  this.setState(){
+    date: new Date(),
+  };
+}
+
+componentWillUnmount(){
+  clearInterval(this.clockTimer)
+}
+
+  render(){
+    return(
+      <h1 className="heading">
+        <span className="text">{new Date().toLocalTimeString(this.state.date)}</span>
+      </h1>
+    );
+  }
+}
+```
