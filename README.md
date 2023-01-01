@@ -79,3 +79,102 @@ componentWillUnmount(){
 ```
 
 ## React Event Handling & Control Re Rendering
+
+<h4>Contents of this video:</h4>
+
+- 0:00 - Intro
+- 1:34 - Event Handling
+- 06:57 - ESLint Warning Solution
+- 14:42 - "this" confusion & solution
+- 34:49 - Passing parameters
+- 37:30 - Detect & Control Re-render
+- 59:45 - My last words
+
+- We can solve `this` issue in three 4 ways in class component
+
+1. `arrow function`
+
+```
+    handleClick = (locale) => {
+        this.setState({
+            locale,
+        });
+    };
+```
+
+2. `bind(this)` in `constructor`
+
+```
+    constructor(props) {
+        super(props);
+        this.state = { date: new Date(), locale: 'bn-BD' };
+        this.handleClick = this.handleClick.bind(this);
+    }
+```
+
+3. Directly use `arrow function` in button
+
+```
+ <Button change={() => this.handleClick()} locale="en-US">
+      Click here
+  </Button>
+```
+
+```
+
+import React from 'react';
+import Button from './Button';
+
+class Clock extends React.Component {
+    state = { date: new Date(), locale: 'bn-BD' };
+
+    // constructor(props) {
+    //     super(props);
+    //     this.state = { date: new Date(), locale: 'bn-BD' };
+    //     // this.handleClick = this.handleClick.bind(this);
+    // }
+
+    componentDidMount() {
+        this.clockTimer = setInterval(() => this.tick(), 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.clockTimer);
+    }
+
+    // handleClick = (locale) => {
+    //     this.setState({
+    //         locale,
+    //     });
+    // };
+
+    handleClick(locale) {
+        this.setState({
+            locale,
+        });
+    }
+
+    tick() {
+        this.setState({
+            date: new Date(),
+        });
+    }
+
+    render() {
+        console.log('clock component rendered');
+        const { date, locale } = this.state;
+        return (
+            <div>
+                <h1 className="heading">
+                    <span className="text">{date.toLocaleTimeString(locale)}</span>
+                </h1>
+                <Button change={() => this.handleClick()} locale="en-US">
+                    Click here
+                </Button>
+            </div>
+        );
+    }
+}
+
+export default Clock;
+```
