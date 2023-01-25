@@ -12,6 +12,17 @@
   **For Bold Text**
 ```
 
+## React Components and Props Core Concept
+
+- React is a vanilla js library and React element is a vanilla js object
+- You can write the element at once but you can't change it but you can create so many components as a chilidren of that component
+- React element and the component is not the same thing
+- What we pass in the component attribute that will be the parameter of the function and that will stay and pass as an object
+  -React give us the class component so that we can write stateful component
+- After extends React.Component react call the render method
+- In the class component props will write with this. props
+- Should not change the props value in jsx when already pass the value in the component
+
 ## React State & Lifecycle in Class Component
 
 - Class Component is statefull component
