@@ -131,6 +131,15 @@ componentWillUnmount(){
   </Button>
 ```
 
+4. We can directly bind `this` with `handleclick()` function
+ - In this way we can also pass parameter.
+
+```
+ <Button change={() => this.handleClick().bind(this, parameter)} locale="en-US">
+      Click here
+  </Button>
+```
+
 ```
 
 import React from 'react';
