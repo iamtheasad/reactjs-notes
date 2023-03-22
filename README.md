@@ -101,9 +101,12 @@ componentWillUnmount(){
 - 37:30 - Detect & Control Re-render
 - 59:45 - My last words
 
-- We can solve `this` issue in three 4 ways in class component
+### We can solve `this` keyword issue in three 4 ways in `class component`
 
 1. `arrow function`
+
+- This is the best way to prevent `this` keyword confusion in react
+- This is one of the main reason `arrow function` created for
 
 ```
     handleClick = (locale) => {
@@ -134,10 +137,11 @@ componentWillUnmount(){
 4. We can directly bind `this` with `handleclick()` function. In this way we can also pass parameter.
 
 ```
- <Button change={() => this.handleClick().bind(this, parameter)} locale="en-US">
+ <Button change={() => this.handleClick().bind(this, parameter)}>
       Click here
   </Button>
 ```
+<h4>Full Example:</h4>
 
 ```
 
@@ -187,7 +191,7 @@ class Clock extends React.Component {
                 <h1 className="heading">
                     <span className="text">{date.toLocaleTimeString(locale)}</span>
                 </h1>
-                <Button change={() => this.handleClick()} locale="en-US">
+                <Button change={() => this.handleClick()}>
                     Click here
                 </Button>
             </div>
@@ -197,3 +201,22 @@ class Clock extends React.Component {
 
 export default Clock;
 ```
+
+-  `componentDidMount()` is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+- `componentDidMount` means after the browser load complete what we want to do that logic will be in this react lifecycle method
+
+`  
+componentDidMount() {
+     this.clockTimer = setInterval(() => this.tick(), 1000);
+ }
+`
+
+- `componentWillUnmount()` is invoked immediately before a component is unmounted and destroyed. Perform any necessary cleanup in this method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in `componentDidMount()`
+- `componentWillUnmount` means after the `componentDidMount` completion or This method is called when a component is being removed from the DOM
+
+`
+ componentWillUnmount() {
+     clearInterval(this.clockTimer);
+ }
+    `
+
