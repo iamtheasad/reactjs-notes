@@ -141,7 +141,8 @@ componentWillUnmount(){
       Click here
   </Button>
 ```
-<h4>Full Example:</h4>
+
+- Full Example:
 
 ```
 
@@ -205,11 +206,11 @@ export default Clock;
 -  `componentDidMount()` is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
 - `componentDidMount` means after the browser load complete what we want to do that logic will be in this react lifecycle method
 
-`  
+```
 componentDidMount() {
      this.clockTimer = setInterval(() => this.tick(), 1000);
  }
-`
+```
 
 - `componentWillUnmount()` is invoked immediately before a component is unmounted and destroyed. Perform any necessary cleanup in this method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in `componentDidMount()`
 - `componentWillUnmount` means after the `componentDidMount` completion or This method is called when a component is being removed from the DOM
