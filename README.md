@@ -215,9 +215,9 @@ componentDidMount() {
 - `componentWillUnmount()` is invoked immediately before a component is unmounted and destroyed. Perform any necessary cleanup in this method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in `componentDidMount()`
 - `componentWillUnmount` means after the `componentDidMount` completion or This method is called when a component is being removed from the DOM
 
-`
+```
  componentWillUnmount() {
      clearInterval(this.clockTimer);
  }
-    `
+    ```
 
