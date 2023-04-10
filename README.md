@@ -35,6 +35,7 @@
 - `state` is js `object`
 - A `state` always should have initial value
 - If we need `setSate` change with `state` value we can use arrow function of normal function in `setState`
+- Whenever call `setState()` it will call react `render` method
 
 ```
 this.setState((state, props) => ({
@@ -203,7 +204,7 @@ class Clock extends React.Component {
 export default Clock;
 ```
 
--  `componentDidMount()` is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
+- `componentDidMount()` is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
 - `componentDidMount` means after the browser load complete what we want to do that logic will be in this react lifecycle method
 
 ```
@@ -220,4 +221,3 @@ componentDidMount() {
      clearInterval(this.clockTimer);
  }
 ```
-
