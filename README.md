@@ -143,7 +143,9 @@ componentWillUnmount(){
   </Button>
 ```
 
-- Full Example:
+- Note: `.bind(this, parameter)` this syntax every time render new function so it should not be use.
+
+<b>Full Example:</b>
 
 ```
 
@@ -204,6 +206,8 @@ class Clock extends React.Component {
 export default Clock;
 ```
 
+<h4>componentDidMount()</h4>
+
 - `componentDidMount()` is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request.
 - `componentDidMount` means after the browser load complete what we want to do that logic will be in this react lifecycle method
 
@@ -213,6 +217,8 @@ componentDidMount() {
  }
 ```
 
+<h4>componentWillUnmount()</h4>
+
 - `componentWillUnmount()` is invoked immediately before a component is unmounted and destroyed. Perform any necessary cleanup in this method, such as invalidating timers, canceling network requests, or cleaning up any subscriptions that were created in `componentDidMount()`
 - `componentWillUnmount` means after the `componentDidMount` completion or This method is called when a component is being removed from the DOM
 
@@ -220,4 +226,92 @@ componentDidMount() {
  componentWillUnmount() {
      clearInterval(this.clockTimer);
  }
+```
+
+<h4>shouldComponentUpdate(nextProps, nextState)</h4>
+
+- It should use only when a huge component re rendering every time and it's cost a huge perfamnce issue other wise don't use it.
+
+<b>Clock Component</b>
+
+```
+import React from "react";
+import Button from "./Button";
+
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      locale: "en-US",
+      date: new Date()
+    };
+  }
+
+  componentDidMount() {
+    this.localTimer = setInterval(() => {
+      this.setState({
+        date: new Date()
+      });
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.localTimer);
+  }
+
+  handleClick = (locale) => {
+    this.setState({
+      locale: locale
+    });
+  };
+
+  render() {
+    console.log("Clock Component Rendered");
+
+    const { locale, date } = this.state;
+    return (
+      <>
+        <div>{date.toLocaleTimeString(locale)}</div>
+        <Button change={this.handleClick} locale="bn-BD" />
+      </>
+    );
+  }
+}
+
+export default Clock;
+
+```
+
+**Button Component**
+
+```
+import React from "react";
+
+class Button extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    const { change: currentChange, locale: currentLocale } = this.props;
+    const { change: nextChange, locale: nextLocale } = nextProps;
+
+    if (currentChange === nextChange && currentLocale === nextLocale) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  render() {
+    const { change, locale } = this.props;
+    console.log("BUttonr rendered");
+    return (
+
+      <button type="button" onClick={() => change(locale)}>
+        Time Language Change On click
+      </button>
+    );
+  }
+}
+
+export default Button;
+
 ```
