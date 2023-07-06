@@ -315,3 +315,12 @@ class Button extends React.Component {
 export default Button;
 
 ```
+
+## Composition & Inheritance
+
+- Reactjs don't sajest to do inheritance in class.
+
+## HOC - Higher Order Function
+
+- HOC is a function
+- It's reduce code duplication
