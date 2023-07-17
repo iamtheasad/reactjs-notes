@@ -324,3 +324,58 @@ export default Button;
 
 - HOC is a function
 - It's reduce code duplication
+- HOC component start with small letter `withCounter`
+
+- HOC creation:
+
+```
+import React from "react";
+import Counter from "../HigerOrder/Counter";
+
+const withCounter = (OriginalComponent) => {
+  class NewComponent extends React.Component {
+    state = {
+      count: 0
+    };
+
+    incrementalCount = () => {
+      this.setState((prevState) => ({
+        count: prevState.count + 1
+      }));
+    };
+
+    render() {
+      const { count } = this.state;
+      return (
+        <OriginalComponent
+          count={count}
+          incrementalCount={this.incrementalCount}
+        />
+      );
+    }
+  }
+
+  return NewComponent;
+};
+
+export default withCounter;
+
+```
+
+- HOC uses in component label:
+
+```
+import React from "react";
+import withCounter from "./HOC2/withCounter";
+
+const Counter2 = (props) => {
+  const { count, inCrementCounter } = props;
+  return (
+    <div>
+      <p onClick={inCrementCounter}>You Clicked {count} Times</p>
+    </div>
+  );
+};
+
+export default withCounter(Counter2);
+```
