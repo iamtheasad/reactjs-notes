@@ -379,3 +379,109 @@ const Counter2 = (props) => {
 
 export default withCounter(Counter2);
 ```
+
+## React Render Props
+
+- Render props define render logic outside of component
+- Render props pass as a function and itself can get props
+
+`Counter.js` file
+
+```
+import React from "react";
+
+export class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  incrementCount = () => {
+    this.setState((prevState, props) => ({
+      count: prevState.count + 1
+    }));
+  };
+
+  render() {
+    const { count } = this.state;
+    const { render } = this.props;
+
+    return <div>{render(count, this.incrementCount)}</div>;
+  }
+}
+```
+
+`App.js`
+
+- I called `Counter` component and pass `render` as `function` props
+
+```
+import React from "react";
+import ClickCounter from "./components/ClickCounter";
+import { Counter } from "./components/Counter";
+import HoverCounter from "./components/HoverCounter";
+
+import "./styles.css";
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <div className="App">
+        {/* <User name={(isLoggedIn) => isLoggedIn ? 'RAna' : 'Guest'} /> */}
+
+        <Counter
+          render={(count, incrementCount) => (
+            <ClickCounter count={count} incrementCount={incrementCount} />
+          )}
+        />
+
+        <Counter
+          render={(count, incrementCount) => (
+            <HoverCounter count={count} incrementCount={incrementCount} />
+          )}
+        />
+      </div>
+    );
+  }
+}
+
+```
+
+`ClickCounter` File
+
+```
+import React from "react";
+
+class ClickCounter extends React.Component {
+  render() {
+    const { incrementCount, count } = this.props;
+
+    return (
+      <button type="button" onClick={incrementCount}>
+        click here {count}
+      </button>
+    );
+  }
+}
+
+export default ClickCounter;
+
+```
+
+`HoverCounter` file
+
+```
+import React from "react";
+
+class HoverCounter extends React.Component {
+  render() {
+    const { incrementCount, count } = this.props;
+
+    return <h1 onMouseOver={incrementCount}>Hover Over Counter {count}</h1>;
+  }
+}
+
+export default HoverCounter;
+```
