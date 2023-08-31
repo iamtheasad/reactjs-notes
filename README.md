@@ -25,6 +25,7 @@
 
 ## React State & Lifecycle in Class Component
 
+- `state` is a object property and `setState` is a method of a class
 - Class Component is statefull component
 - Functional Component is a stateless component
 - In functional component we use `useEffect()` hook instead of class lifecycle method
@@ -32,7 +33,7 @@
 - `state` means data of `component`
 - `state` is property of `React.Component` method
 - `rendar` is a method
-- `state` is js `object`
+- `state` is js `object` property
 - A `state` always should have initial value
 - If we need `setSate` change with `state` value we can use arrow function of normal function in `setState`
 - Whenever call `setState()` it will call react `render` method
