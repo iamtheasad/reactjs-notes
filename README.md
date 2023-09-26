@@ -229,6 +229,10 @@ componentDidMount() {
  }
 ```
 
+<h4>componentDidUpdate()</h4>
+
+- It works after `componentDidMount()` render whenever need to update something in your component it should use there
+
 <h4>shouldComponentUpdate(nextProps, nextState)</h4>
 
 - It should use only when a huge component re rendering every time and it's cost a huge perfamnce issue other wise don't use it.
@@ -486,3 +490,27 @@ class HoverCounter extends React.Component {
 
 export default HoverCounter;
 ```
+
+## Hooks
+
+### useEffect Hook
+
+<h4>React Responsibilities</h4>
+
+- UI Render
+- React to user input / actions
+- Render jsx code
+- Manage state and props
+- React events / inputs
+- Evaluating state/props change
+
+<h4>It only works for maintain side effects of a react component</h4>
+
+** Exampe of side effects: **
+
+1. Fetchind data from any API
+2. Updating Dom
+3. Settings any subscriptions or timers
+
+- `useEffect` is a function
+- `useEffect` run in every render
