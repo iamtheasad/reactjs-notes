@@ -495,22 +495,52 @@ export default HoverCounter;
 
 ### useEffect Hook
 
-<h4>React Responsibilities</h4>
+<h4>React Responsibilities:</h4>
 
 - UI Render
 - React to user input / actions
 - Render jsx code
 - Manage state and props
 - React events / inputs
-- Evaluating state/props change
+- Evaluating state / props change
 
-<h4>It only works for maintain side effects of a react component</h4>
+<h4>useEffect Details</h4>
 
-** Exampe of side effects: **
+- <b>It only works for maintain side effects of a react component</b>
 
-1. Fetchind data from any API
-2. Updating Dom
-3. Settings any subscriptions or timers
+- **Exampe of side effects:**
+
+  1. Fetchind data from any API
+  2. Updating Dom
+  3. Settings any subscriptions or timers
 
 - `useEffect` is a function
 - `useEffect` run in every render
+- It works like `componentDidMount componentDidUnmount componentDidUpdate` lifecycle method of class component
+- On every render `useEffect` will run again but you can stop re-render `useEffect` by conditionally using `[]` array as optional argument
+
+<b>without condition</b>
+
+```
+useEffect(() => {
+  document.title = `You clicked ${count} times`;
+}); // Everytime will re-render this if component render
+```
+
+<b>first time render</b>
+
+```
+useEffect(() => {
+  document.title = `You clicked ${count} times`;
+}, []); // Only run first time when component render
+```
+
+<b>with condition</b>
+
+```
+useEffect(() => {
+  document.title = `You clicked ${count} times`;
+}, [count]); // Only re-run the effect if count changes
+```
+
+- If you start any timer in `useEffect` you should stop it, otherwise it will create memory leak situation and it will create performance issues grately.
