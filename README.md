@@ -565,3 +565,5 @@ return () => {
 
 }, []); // Only first time run on first time DOM loading
 ```
+
+- Timer always should be stop manually whenever component unmounted
