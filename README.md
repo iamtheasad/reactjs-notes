@@ -544,3 +544,24 @@ useEffect(() => {
 ```
 
 - If you start any timer in `useEffect` you should stop it, otherwise it will create memory leak situation and it will create performance issues grately.
+
+```
+const [date, setDate] = useState(new Date());
+
+const tick = () =>{
+  setDate(new Date());
+}
+
+useEffect(() => {
+  console.log('Starting Timer');
+
+const interval = setInerval(tick, 1000); // Initialize timer in every 1 seconds after.
+
+// Clearing set interval using return a function
+
+return () => {
+  clearInterval(interval);
+}
+
+}, []); // Only first time run on first time DOM loading
+```
