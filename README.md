@@ -680,3 +680,51 @@ export const MyUseReducerComplex = () => {
 };
 
 ```
+
+- Multiple useReducer in same component
+  `CounterThree.js`
+
+```
+import { useReducer } from "react";
+
+let initialState = 0;
+let initialState2 = 5;
+
+const reducer = (state, action) => {
+  switch (action) {
+    case "increment":
+      return state + 1;
+    case "decrement":
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
+function CounterThree() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state2, dispatch2] = useReducer(reducer, initialState2);
+
+  return (
+    <>
+      <div>
+        <p>Count - {state}</p>
+        <button onClick={() => dispatch("increment")}>Increment</button>
+        <br />
+        <br />
+        <button onClick={() => dispatch("decrement")}>Decrement</button>
+      </div>
+      <div>
+        <p>Count2 - {state2}</p>
+        <button onClick={() => dispatch2("increment")}>Increment</button>
+        <br />
+        <br />
+        <button onClick={() => dispatch2("decrement")}>Decrement</button>
+      </div>
+    </>
+  );
+}
+
+export default CounterThree;
+
+```
