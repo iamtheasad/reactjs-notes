@@ -567,3 +567,11 @@ return () => {
 ```
 
 - Timer always should be stop manually whenever component unmounted
+
+## useMemo & useCallback Hook
+
+nothing here
+
+## useReducer
+
+I don't understatnd what is this
