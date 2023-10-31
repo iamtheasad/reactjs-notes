@@ -576,7 +576,43 @@ nothing here
 
 I don't understatnd what is this
 
-`useReducerComplexExample`
+`myUsReducer.js`
+
+```
+import { useReducer } from "react";
+
+let initialState = 5;
+
+const reducer = (state, action) => {
+  switch (action) {
+    case "increment":
+      return state + 1;
+    case "decrement":
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
+function MyUseReducer() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <>
+      <p>Count - {state}</p>
+      <button onClick={() => dispatch("increment")}>Increment</button>
+      <br />
+      <br />
+      <button onClick={() => dispatch("decrement")}>Decrement</button>
+    </>
+  );
+}
+
+export default MyUseReducer;
+
+```
+
+`useReducerComplexExample.js`
 
 ```
 import { useReducer } from "react";
