@@ -12,6 +12,14 @@
   **For Bold Text**
 ```
 
+## Why Learn React?
+
+- Organization
+- Reusable
+- Flexibility - Mobile and Desktop
+- Popularity & Support
+- Performance
+
 ## React Components and Props Core Concept
 
 - React is a vanilla js library and React element is a vanilla js object
