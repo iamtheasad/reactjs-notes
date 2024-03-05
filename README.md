@@ -736,3 +736,32 @@ function CounterThree() {
 export default CounterThree;
 
 ```
+
+## Event Bubbling or Event Propagation
+
+- When we click or any event happen on child element it's also fire event on it's parent, this is call event bubbling. We can prevent it with `event.stopPropagation()` function
+
+```
+import './App.css';
+function App() {
+  const handleHeaderClick = () => {
+    console.log('Header was clicked');
+  };
+  const handleButtonClick = (event) => {
+    event.stopPropagation();
+    console.log('The logout button was clicked');
+  };
+
+  return (
+    <>
+      <div className="styleHeader" onClick={handleHeaderClick}>
+        <div>Header</div>
+        <button type="button" onClick={handleButtonClick}>
+          Log Out
+        </button>
+      </div>
+    </>
+  );
+}
+export default App;
+```
