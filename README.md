@@ -333,7 +333,11 @@ export default Button;
 
 - Reactjs don't sajest to do inheritance in class.
 
-## HOC - Higher Order Function
+## React Lifting State Up
+
+- React lifting state up, HOC and render props are the same thing. But it's have some difference.
+
+## HOC - Higher Order Component
 
 - HOC is a function
 - It's reduce code duplication
