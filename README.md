@@ -574,13 +574,26 @@ return () => {
 }, []); // Only first time run on first time DOM loading
 ```
 
+- If `useEffect` hook reuturn something it will clean up the thins what `useEffect` started like React class lifecyle method `componentDidUnmount`.
 - Timer always should be stop manually whenever component unmounted
 
-## useMemo & useCallback Hook
+## useCallback Hook
 
-nothing here
+- `useCallback` remember function between re-render.
+- `useCallback` return memoized version of the callback function that only changes if one of the dependencies has changed. Just like `useEffect` it will return a cleanup function.
+- `useCallback` is similar to `useMemo` but it will return a memoized function.
+- `useCallback` is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders.
+- `useCallback` remember the function reference between re-render.
+- `useCallback` mainly used for remembering function reference.
 
-## useReducer
+## useMemo Hook
+
+- `useMemo` remember the value between re-render. Not reference like `useCallback`.
+- `useMemo` remember a function return value and avoid re-render the value
+- `useMemo` will re-render only when his dependecy array change.
+- `useMemo` itself a function so don't need to call function in jsx.
+
+## useReducer Hook
 
 I don't understatnd what is this
 
