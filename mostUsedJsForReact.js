@@ -135,29 +135,29 @@ const data = [
   },
 ];
 /* 
-  function getTotalReviewCount(book) {
-    const goodread = book.reviews?.goodreads?.reviewsCount;
-    const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
-  
-    goodread;
-    librarything;
-    return goodread + librarything;
-  }
-  
-  const essentialData = data.map((ele) => {
-    return {
-      bookTitle: ele.title,
-      bookAuthor: ele.author,
-      reviewsCount: getTotalReviewCount(ele),
-    };
-  });
-  
-  console.log(essentialData);
-  
-  const rana = essentialData.map((ele) => ele.bookTitle);
-  
-  console.log(rana);
-   */
+function getTotalReviewCount(book) {
+  const goodread = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+
+  goodread;
+  librarything;
+  return goodread + librarything;
+}
+
+const essentialData = data.map((ele) => {
+  return {
+    bookTitle: ele.title,
+    bookAuthor: ele.author,
+    reviewsCount: getTotalReviewCount(ele),
+  };
+});
+
+console.log(essentialData);
+
+const rana = essentialData.map((ele) => ele.bookTitle);
+
+console.log(rana);
+ */
 // function getBooks() {
 //   return data;
 // }
@@ -247,3 +247,17 @@ let adventureBook = books
   .filter((book) => book.genres.includes("adventure"))
   .map((book) => book.title);
 adventureBook;
+
+// Reducer
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+pagesAllBooks;
+
+// Array Sorting
+const arr = [3, 7, 1, 9, 6];
+
+const sorted = arr.slice().sort((a, b) => b - a);
+sorted;
+arr;
+
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+sortedByPages;
