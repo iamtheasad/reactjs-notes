@@ -1062,3 +1062,15 @@ const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
 sortedByPages;
 
 ```
+
+## Js Notes
+
+### `rest` operator
+
+- `rest` operator only works with array
+- It means বাকি যা আছে তা সব দেখানো
+
+### `spread` operator
+
+- It means ছরিয়ে দেয়া
+- `spread` operator works with both array and object
