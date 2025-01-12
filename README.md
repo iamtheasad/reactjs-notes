@@ -1070,7 +1070,56 @@ sortedByPages;
 - `rest` operator only works with array
 - It means বাকি যা আছে তা সব দেখানো
 
+```
+// Rest Operator
+const [a, d, f, ...resOp] = genres;
+console.log(a, d, f, resOp);
+```
+
 ### `spread` operator
 
 - It means ছরিয়ে দেয়া
 - `spread` operator works with both array and object
+
+```
+// Spread Operator Using in a Object
+const newObj = {
+  ...book,
+  // Adding new property in newObj
+  movieReleaseDate: "24-12-24",
+  // Over writing existing property
+  pages: 343,
+};
+newObj;
+
+// Spread Operator Using in a Array
+const newGenres = [...genres, "rana"];
+newGenres;
+
+
+```
+
+### How to add, delete and update an array without changing original array?
+
+```
+// 1) Add book object to array
+const newBook2 = {
+  id: 6,
+  title: "Harry Potter and Chamber of Secret",
+  author: "J. K. Rowling",
+};
+
+const booksAfterAdd = [...books, newBook2];
+booksAfterAdd;
+
+// 2) Delete book object from array
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+booksAfterDelete;
+
+//  3) Update book object in the array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 10 } : book
+);
+booksAfterUpdate;
+
+```
