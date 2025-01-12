@@ -273,11 +273,11 @@ const booksAfterAdd = [...books, newBook2];
 booksAfterAdd;
 
 // 2) Delete book object from array
-const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 1);
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
 booksAfterDelete;
 
 //  3) Update book object in the array
 const booksAfterUpdate = booksAfterDelete.map((book) =>
-  book.id === 1 ? {} : book
+  book.id === 1 ? { ...book, pages: 10 } : book
 );
 booksAfterUpdate;
